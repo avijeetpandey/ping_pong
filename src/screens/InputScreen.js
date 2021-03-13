@@ -1,10 +1,17 @@
 import React, {useState} from 'react';
 import {Text, StyleSheet, ScrollView} from 'react-native';
 import {Container, Form, Item, Input, Button, H1} from 'native-base';
+import {setNames} from '../action';
+import {connect} from 'react-redux';
 
-const InputScreen = ({navigation}) => {
+const InputScreen = ({navigation, _setNames}) => {
   const [playerOneName, setPlayerOneName] = useState('');
   const [playerTwoName, setPlayerTwoName] = useState('');
+
+  const handleContinue = () => {
+    _setNames(playerOneName, playerTwoName);
+    navigation.navigate('PlayerScreen');
+  };
 
   return (
     <>
@@ -30,7 +37,7 @@ const InputScreen = ({navigation}) => {
                 placeholderTextColor="#00b7c2"
               />
             </Item>
-            <Button rounded block onPress={() => {}}>
+            <Button rounded block onPress={handleContinue}>
               <Text style={styles.button}>Contiue</Text>
             </Button>
           </Form>
@@ -66,4 +73,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InputScreen;
+export default connect(null, {
+  _setNames: setNames,
+})(InputScreen);
