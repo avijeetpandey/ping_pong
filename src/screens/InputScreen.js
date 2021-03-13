@@ -9,8 +9,14 @@ const InputScreen = ({navigation, _setNames}) => {
   const [playerTwoName, setPlayerTwoName] = useState('');
 
   const handleContinue = () => {
-    _setNames(playerOneName, playerTwoName);
-    navigation.navigate('PlayerScreen');
+    if (playerOneName && playerTwoName) {
+      _setNames(playerOneName, playerTwoName);
+      navigation.navigate('PlayerScreen');
+      setPlayerOneName('');
+      setPlayerTwoName('');
+    } else {
+      alert("Names can't be empty");
+    }
   };
 
   return (
