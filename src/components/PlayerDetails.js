@@ -13,7 +13,7 @@ const PlayerDetails = ({name, _addWin, score}) => {
   return (
     <>
       <List>
-        <ListItem>
+        <ListItem key={name}>
           <Left>
             <H3 style={styles.player}>{name}</H3>
           </Left>

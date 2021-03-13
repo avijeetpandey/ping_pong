@@ -1,16 +1,13 @@
+import React, {useState, useEffect} from 'react';
 import {Container, H3} from 'native-base';
-import React from 'react';
-import {useEffect} from 'react';
-import {useState} from 'react';
 import {StyleSheet} from 'react-native';
-import {set} from 'react-native-reanimated';
 import {connect} from 'react-redux';
 
 const CurrentWinner = ({players}) => {
   const [winnerName, setWinerName] = useState('');
   const [winDifference, setWinDifference] = useState(0);
 
-  useEffect(() => {
+  const calculateWinner = () => {
     let min = Number.POSITIVE_INFINITY,
       max = Number.NEGATIVE_INFINITY;
     for (let index in players) {
@@ -23,13 +20,17 @@ const CurrentWinner = ({players}) => {
     }
     setWinerName(Object.keys(players).find(key => players[key].score === max));
     setWinDifference(max - min);
-  }, [players, winDifference, winnerName]);
+  };
+
+  useEffect(() => {
+    calculateWinner();
+  });
 
   return (
     <>
       <Container style={styles.container}>
         <H3 style={styles.text}>
-          Current Winner : {winDifference === 0 ? 'Both Winner' : winnerName}
+          Current Winner : {winDifference === 0 ? 'Both' : winnerName}
         </H3>
         <H3 style={styles.text}>
           Win Difference : {winDifference === 0 ? 'Its a tie' : winDifference}

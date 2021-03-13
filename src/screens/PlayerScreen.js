@@ -4,6 +4,7 @@ import {Container} from 'native-base';
 import PlayerDetails from '../components/PlayerDetails';
 import {connect} from 'react-redux';
 import CurrentWinner from '../components/CurrentWinner';
+import SaveGame from '../components/SaveGame';
 
 const PlayerScreen = ({navigation, route, players}) => {
   return (
@@ -13,6 +14,7 @@ const PlayerScreen = ({navigation, route, players}) => {
           return <PlayerDetails name={key} score={players[key].score} />;
         })}
         <CurrentWinner />
+        <SaveGame />
       </Container>
     </>
   );
