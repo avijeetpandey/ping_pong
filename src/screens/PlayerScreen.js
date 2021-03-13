@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 import {Container} from 'native-base';
 import PlayerDetails from '../components/PlayerDetails';
 import {connect} from 'react-redux';
+import CurrentWinner from '../components/CurrentWinner';
 
 const PlayerScreen = ({navigation, route, players}) => {
   return (
@@ -11,6 +12,7 @@ const PlayerScreen = ({navigation, route, players}) => {
         {Object.keys(players).map(key => {
           return <PlayerDetails name={key} score={players[key].score} />;
         })}
+        <CurrentWinner />
       </Container>
     </>
   );
