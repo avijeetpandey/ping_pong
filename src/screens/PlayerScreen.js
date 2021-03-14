@@ -11,7 +11,9 @@ const PlayerScreen = ({navigation, route, players}) => {
     <>
       <Container style={styles.container}>
         {Object.keys(players).map(key => {
-          return <PlayerDetails name={key} score={players[key].score} />;
+          return (
+            <PlayerDetails key={key} name={key} score={players[key].score} />
+          );
         })}
         <CurrentWinner />
         <SaveGame />
