@@ -25,7 +25,7 @@ cd into ping_pong and run the following command
 
 ```
 yarn install
-yarn run android
+**yarn start** and then open a new terminal window in the same directory and run **yarn run android**
 ```
 
 This will setup , build and launch the app in emulator or in physical device
